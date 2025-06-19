@@ -1,0 +1,54 @@
+[
+  {
+    "Id": "f9b4e9f6-3b84-420a-9f6d-c1e59a963998",
+    "Category": "Giyim",
+    "SubCategory": "Tişört",
+    "Name": "Beyaz Oversize Tişört",
+    "Color": "Beyaz",
+    "Material": "Pamuk",
+    "Style": "Günlük",
+    "Fit": "Oversize",
+    "Length": "Diz üstü",
+    "Season": "Yaz",
+    "ExtraDetail": "Yaka baskılı",
+    "ImagePath": "/images/items/ti-sort.jpg"
+  },
+  {
+    "Id": "2c39bc13-71bb-4b7a-b170-9cc3196cb201",
+    "Category": "Aksesuar",
+    "SubCategory": "Kolye",
+    "Name": "Üç Katlı Gümüş Kolye",
+    "Color": "Gümüş",
+    "Style": "Şık",
+    "ChainType": "Zincir",
+    "IsMultiLayered": true,
+    "NecklaceLengths": [ "Kısa", "Orta", "Uzun" ],
+    "ExtraDetail": "Kalp uçlu",
+    "ImagePath": "/images/items/kolye.jpg"
+  },
+  {
+    "Id": "d1438f23-bf92-4a7f-b734-66de18f2dce1",
+    "Category": "Ayakkabı",
+    "SubCategory": "Spor",
+    "Name": "Siyah Spor Ayakkabı",
+    "Color": "Siyah",
+    "Material": "Deri",
+    "Style": "Günlük",
+    "ShoeTypeDetail": "Koşu ayakkabısı",
+    "IsAnkleSupport": true,
+    "ExtraDetail": "Yüksek taban",
+    "ImagePath": "/images/items/spor-ayakkabi.jpg"
+  },
+  {
+    "Id": "a3fd9d9e-6cb3-48ec-8c73-df4b690dff62",
+    "Category": "Şapka",
+    "SubCategory": "Bere",
+    "Name": "Kırmızı Bere",
+    "Color": "Kırmızı",
+    "Material": "Yün",
+    "Style": "Sokak",
+    "HatShape": "Yuvarlak",
+    "ExtraDetail": "Pomponlu",
+    "ImagePath": "/images/items/bere.jpg"
+  }
+]
