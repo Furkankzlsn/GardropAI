@@ -1,0 +1,106 @@
+﻿@model List<GardropAI.Models.ClothingItemModel>
+
+@{
+    ViewData["Title"] = "Gardırobum";
+}
+
+<h2 class="mb-4">👕 Gardırobum</h2>
+
+<!-- 🔍 Filtre Formu -->
+<form method="get" class="row g-2 mb-4">
+    <div class="col-md-2">
+        <input type="text" name="type" class="form-control" placeholder="Tür (Tişört, Pantolon)" value="@Context.Request.Query["type"]">
+    </div>
+    <div class="col-md-2">
+        <input type="text" name="color" class="form-control" placeholder="Renk (Beyaz, Siyah)" value="@Context.Request.Query["color"]">
+    </div>
+    <div class="col-md-2">
+        <input type="text" name="season" class="form-control" placeholder="Mevsim (Yaz, Kış)" value="@Context.Request.Query["season"]">
+    </div>
+    <div class="col-md-2">
+        <input type="text" name="style" class="form-control" placeholder="Stil (Spor, Klasik)" value="@Context.Request.Query["style"]">
+    </div>
+    <div class="col-md-auto">
+        <button type="submit" class="btn btn-primary">Filtrele</button>
+        <a href="/Wardrobe/Index" class="btn btn-outline-secondary">Tümünü Göster</a>
+    </div>
+</form>
+
+<!-- 📋 Kıyafet Listesi -->
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Ad</th>
+                <th>Tür</th>
+                <th>Renk</th>
+                <th>Mevsim</th>
+                <th>Kumaş</th>
+                <th>Stil</th>
+                <th>İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Type</td>
+                    <td>@item.Color</td>
+                    <td>@item.Season</td>
+                    <td>@item.Material</td>
+                    <td>@item.Style</td>
+                    <td>
+                        <a href="/Wardrobe/Edit/@item.Id" class="btn btn-sm btn-warning">Düzenle</a>
+                        <button class="btn btn-sm btn-danger" onclick="confirmDelete(@item.Id)">Sil</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">
+        Uygun kıyafet bulunamadı. Filtreleri temizleyip tekrar deneyin.
+    </div>
+}
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Silmek istediğinize emin misiniz?',
+                text: "Bu işlem geri alınamaz!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Evet, sil!',
+                cancelButtonText: 'Vazgeç'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch('/Wardrobe/DeleteConfirmed', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(id)
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            Swal.fire('Silindi!', data.message, 'success')
+                                .then(() => {
+                                    location.reload(); // İsteğe bağlı, ister satırı sil ister sayfayı yenile
+                                });
+                        } else {
+                            Swal.fire('Hata', data.message, 'error');
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+}

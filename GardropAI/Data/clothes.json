@@ -1,0 +1,29 @@
+[
+  {
+    "Id": 1,
+    "Name": "Ti\u015F\u00F6rt 1",
+    "Type": "Ti\u015F\u00F6rt",
+    "Color": "Beyaz",
+    "Season": "Yaz",
+    "Material": "Pamuk",
+    "Style": "Spor"
+  },
+  {
+    "Id": 2,
+    "Name": "Siyah Kot Pantolon",
+    "Type": "Pantolon",
+    "Color": "Siyah",
+    "Season": "K\u0131\u015F",
+    "Material": "Kot",
+    "Style": "G\u00FCnl\u00FCk"
+  },
+  {
+    "Id": 3,
+    "Name": "Kuma\u015F Pantolon",
+    "Type": "Pantolon",
+    "Color": "Siyah",
+    "Season": "Hepsi",
+    "Material": "Kuma\u015F",
+    "Style": "\u0130\u015F"
+  }
+]
