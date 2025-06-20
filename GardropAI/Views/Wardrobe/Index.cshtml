@@ -1,1 +1,62 @@
-﻿
+﻿@{
+    ViewData["Title"] = "Gardrobum";
+    var mainGroups = new[] {
+        new { Name = "Giyim", Icon = "fa-shirt" },
+        new { Name = "Aksesuar", Icon = "fa-gem" },
+        new { Name = "Ayakkabı", Icon = "fa-shoe-prints" }
+    };
+}
+<!--Kartlarda hover animasyonu ve sade bir gölge efekti çok iyi olur. Responsive grid/card yapısı (Bootstrap 5 ile kolayca yapılabilir) çok iyi olur. sweetalert2 daha uygun benim için. Görünüm tipi için sağ üstte bir toggle ikon (grid/list) olması daha iyi dediğin gibi. her seçimde tümünü göster olduğu gibi her seçim yaptığında geri butonu da olmalı ekstra olarak bunları başlangıçta buton ama card şekilde estetik butonlar olarak yapabiliriz diye düşündüm ekran ortasında-->
+<div class="d-flex flex-column align-items-center justify-content-center min-vh-100">
+    <h2 class="mb-4">Gardrobunu Keşfet</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4 w-100 justify-content-center" style="max-width: 700px;">
+        @foreach (var group in mainGroups)
+        {
+            <div class="col">
+                <button class="card group-card text-center shadow-sm border-0 h-100 w-100 py-4 px-2" style="cursor:pointer;" onclick="selectMainGroup('@group.Name')">
+                    <div class="card-body">
+                        <i class="fa-solid @group.Icon fa-2x mb-2"></i>
+                        <h5 class="card-title">@group.Name</h5>
+                    </div>
+                </button>
+            </div>
+        }
+    </div>
+    <div class="mt-4 d-flex gap-3">
+        <button class="btn btn-outline-primary btn-lg card shadow-sm" onclick="showAll()">Tümünü Göster</button>
+    </div>
+</div>
+
+<!-- Görünüm tipi toggle -->
+<button class="btn btn-light position-absolute top-0 end-0 m-4 shadow-sm" id="toggleViewBtn" onclick="toggleView()">
+    <i class="fa-solid fa-table-cells-large"></i>
+</button>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://kit.fontawesome.com/4e9b7e6e2a.js" crossorigin="anonymous"></script>
+    <script>
+        function selectMainGroup(name) {
+            // Burada JS ile seçim sonrası backend'e istek atılabilir veya sayfa yenilenebilir
+            Swal.fire('Seçilen Ana Grup', name, 'info');
+        }
+        function showAll() {
+            Swal.fire('Tümünü Göster', 'Tüm eşyalar listelenecek.', 'info');
+        }
+        function toggleView() {
+            // Görünüm tipi değiştir (grid/list)
+            Swal.fire('Görünüm Değiştir', 'Bu özellik yakında!', 'info');
+        }
+    </script>
+    <style>
+        .group-card {
+            transition: box-shadow 0.2s, transform 0.2s;
+            border-radius: 1.2rem;
+            background: #fff;
+        }
+        .group-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12), 0 1.5px 4px rgba(0,0,0,0.10);
+            transform: translateY(-4px) scale(1.03);
+        }
+    </style>
+}
