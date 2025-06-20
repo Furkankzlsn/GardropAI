@@ -1,17 +1,38 @@
 ﻿@model GardropAI.Models.UserModel
-@{Layout = null;}
+@{
+    Layout = null;
+}
 
-<h2>Giriş Yap</h2>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Giriş Yap - GardropAI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="bg-light d-flex justify-content-center align-items-center" style="height: 100vh;">
 
-<form asp-action="Login" method="post">
-    <div>
-        <label>Kullanıcı Adı:</label>
-        <input asp-for="Username" />
+    <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
+        <h3 class="text-center mb-4">👕 GardropAI Giriş</h3>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">@ViewBag.Error</div>
+        }
+
+        <form method="post" asp-controller="Auth" asp-action="Login">
+            <div class="mb-3">
+                <label class="form-label">Kullanıcı Adı</label>
+                <input asp-for="Username" class="form-control" placeholder="Kullanıcı adınızı girin" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Şifre</label>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Şifrenizi girin" />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Giriş Yap</button>
+        </form>
     </div>
-    <div>
-        <label>Şifre:</label>
-        <input asp-for="Password" type="password" />
-    </div>
-    <button type="submit">Giriş</button>
-    <p style="color:red">@ViewBag.Error</p>
-</form>
+
+</body>
+</html>

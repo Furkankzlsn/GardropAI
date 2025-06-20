@@ -1,50 +1,47 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewData["Title"] - GardropAI</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/GardropAI.styles.css" asp-append-version="true" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
 </head>
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">GardropAI</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                    aria-label="Toggle navigation">
+            <a class="navbar-brand" href="/">👕 GardropAI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Index">Ana Sayfa</a>
+                        <a class="nav-link" href="/Home/Index">Ana Sayfa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Wardrobe" asp-action="Index">Gardırobum</a>
+                        <a class="nav-link" asp-controller="Wardrobe" asp-action="Closet">👗 Gardrobum</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Wardrobe" asp-action="Add">Kıyafet Ekle</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Auth" asp-action="Login">Çıkış</a>
+                        <a class="nav-link" href="/Wardrobe/Add">Ekle</a>
                     </li>
                 </ul>
+                <span class="navbar-text me-3 text-white">
+                    Hoş geldin, @Context.Session.GetString("username")
+                </span>
+                <a class="btn btn-outline-light" href="/Auth/Logout">Çıkış</a>
             </div>
         </div>
     </nav>
 
-    <div>
-        <main role="main">
-            @RenderBody()
-        </main>
+    <div class="container mt-4">
+        @RenderBody()
     </div>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

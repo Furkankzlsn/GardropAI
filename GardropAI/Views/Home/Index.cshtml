@@ -1,6 +1,20 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Ana Sayfa";
 }
 
-<h2>Hoş geldin @ViewBag.User 👋</h2>
-<p>GardropAI'ye hoş geldin! Buradan kombin önerisi alabilirsin.</p>
+<div class="container mt-5">
+    <h2 class="mb-4">👋 Hoş geldin, @ViewBag.Username!</h2>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Gardrobum</h5>
+                    <p class="card-text">Kıyafetlerini görüntülemek için buraya tıkla.</p>
+                    <a href="/Wardrobe/Index" class="btn btn-outline-primary">Görüntüle</a>
+                </div>
+            </div>
+        </div>
+        <!-- İleride buraya diğer widget’ları ekleyebiliriz -->
+    </div>
+</div>

@@ -9,11 +9,9 @@ namespace GardropAI.Controllers
         public IActionResult Index()
         {
             var username = HttpContext.Session.GetString("username");
-            if (string.IsNullOrEmpty(username))
-                return RedirectToAction("Login", "Auth");
-
-            ViewBag.User = username;
+            ViewBag.Username = username;
             return View();
         }
     }
+
 }
